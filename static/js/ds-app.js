@@ -58,7 +58,7 @@ function handleSearchButtonClick() {
     if (filterTitle != "") {
         filteredData = dataSet.filter(function (data) {
         var dataTitle = data.title;
-        return dataTitle === filterTitle;
+        return dataTitle == filterTitle;
     });
 
     };
@@ -87,6 +87,7 @@ function handleSearchButtonClick() {
 
     if (filterCountry != "") {
         filteredData = dataSet.filter(function (data) {
+            console.log(data)
             var dataCountry = data.country.toLowerCase();
             return dataCountry === filterCountry;
         });
@@ -121,11 +122,11 @@ function handleReloadButtonClick() {
 }
 
 // define function to reload page
-function resetForm() {
-    document.getElementById("#WineForm").reset();
-}
+// function resetForm() {
+//     document.getElementById("#WineForm").reset();
+// }
 
-renderTable();
+// renderTable();
 
 // Create function to renderTable 
 function renderTable() {
