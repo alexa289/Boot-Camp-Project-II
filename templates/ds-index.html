@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project II Wine DS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Library for awesome icons on the footer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js">
+    <!-- <link rel="stylesheet" href="./static/css/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ds-style.css') }}">
+    
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="jumbotron text-center">
+        <h1 class="display-3">WINE DATASET</h1>
+        <br>
+        <h3 class="lead">Keep Calm and Drink Wine!</h3>
+        <h2 class="lead">Take a look at this amazing Dataset<br>
+           extracted from the wine reviews <br>
+           @<a href="https://www.winemag.com/?s=&drink_type=wine&page=%7B0%7D">WineEnthusiast!</a></h2>
+      </div>
+      <!--Div for the record count and group rows-->
+      <div class="row">
+        <div class="col-md-9 text-left">
+          <div class="form-inline">
+            <label>Show
+              <select id="pages">
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>  Records
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3 text-right">
+          <div class="form-inline">
+            <p id="recordCounter"> From Record: to: out of </p>
+          </div>
+        </div>
+      </div>
+
+    <br>
+    <!--Divs for the select boxes-->
+    <div class="row">
+      <div class="col-md-12">
+        <form id="WineForm">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+              <input type="text" class="form-control" id="title" placeholder="title">
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" id="points" placeholder="points(greater equal than)">
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" id="price" placeholder="price(less equal than)">
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" id="variety" placeholder="variety">
+            </div>
+            <div class="col-md-1">
+              <input type="text" class="form-control" id="country" placeholder="country code">
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" id="twitter_handle" placeholder="Tester's Twitter">
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          </form>
+          <div class="row"><hr></div>
+
+          <div class="row">
+            <div class="col-md-4 text-left"></div>
+            <div class="col-md-4 text-center">
+              <button id="search" type="button" class="btn btn-success">Search</button>
+            </div>
+            <div class="col-md-4 text-right"></div>
+          </div>
+
+          <div class="row">
+            <hr>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--Divs for the table-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="span6">
+          <div class="container-fluid table-scroll table-responsive">
+            <table id="MyTable" class="table table-fixed table-hover table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th scope="col" onclick="sorting(tbody01, 0)">Points
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 1)">Title
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 2)">Description
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 3)">Taster Name
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 4)">Taster twitter
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 5)">Price (USD)
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 6)">Designation
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 7)">Variety
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 8)">Region1
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 9)">Region2
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 10)">Province
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 11)">Country
+                    <i class="fa fa-sort"></i>
+                  </th>
+                  <th scope="col" onclick="sorting(tbody01, 12)">Winery
+                    <i class="fa fa-sort"></i>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="tbody01"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!--Divs for the bottom page buttons, click to previous/next page-->
+      <div class="row">
+        <div class="col-md-4 text-left">
+          <button id="prev" type="button" class="btn btn-primary"><<< Prev Page</button>
+        </div>
+        <div class="col-md-4 text-center">
+          <button id="load" type="button" class="btn btn-danger" onclick="resetForm()">Reload</button>
+        </div>
+        <div class="col-md-4 text-right">
+          <button id="next" type="button" class="btn btn-primary">Next Page >>></button>
+        </div>
+      </div>
+
+    </div>
+    <!--Import Javascripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src= "table/data/winemag-data-130k-v2.js" type="text/javascript"></script> -->
+    <!-- <script src="table/ds-index.js" type="text/javascript"></script> -->
+    <script src="{{ url_for('static', filename='data/winemag-data-130k-v2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ds-app.js') }}"></script>
+  </body>
+  
+    <div class="container-fluid">
+      <div class="text-center">
+        <footer class = "footer" role="contentinfo" style="background-color: lightgrey">
+          <div class = "footer_main_menu text-center">
+              <a href = "/" title="Home">Home</a>
+              <a href="/viz" title="Visualization1">Visualization1</a>
+              <a href="/viz" title="Visualization1">Visualization2</a>
+              <a href="/viz" title="Visualization1">Visualization3</a>
+              <a href="/viz" title="Visualization1">Visualization4</a>
+              <a href="/contact" title="Contact">Contact</a>
+          </div>
+          <!--Div for footer-->
+          <div class="footer_main_social-links">
+          <a href="https://github.com/alexa289/Boot-Camp-Project-II">
+            <i class="fa fa-github"></i>
+          </a>
+          <a href="https://twitter.com/wineenthusiast">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <p class="footer-text">
+            <small> © Copyright NWU Data Science Boot Camp 
+              </br>
+               April 2018
+            </small>
+          </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+</html>

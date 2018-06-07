@@ -1,0 +1,23 @@
+.jumbotron{
+        margin-top: 20px;
+        background-image: url("img/fall-rose-wine.jpg");
+        background-size: cover;
+        color:black;
+};
+
+
+#img1 {
+        background-image: url("img/draftmap.png")
+}
+
+#img2 {
+        background-image: url("img/draftmap.png")
+}
+
+#img3 {
+        background-image: url("img/draftmap.png")
+}
+
+#img4 {
+        background-image: url("img/draftmap.png")
+}

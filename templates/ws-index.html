@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Check Binnys</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1 class="jumbotron">Find My Wine At Binny's</h1>
+    <div>
+      <ul style="list-style: none;">
+        {% for wine in winelist %}
+        <li>  <a  href="{{ wine.wineurl }}">{{ wine.title }}</a> <img class = "img" src="{{wine.image}}"></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
