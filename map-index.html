@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- <script src="map.js"></script> -->
+</head>
+<body>
+    <!-- Plotly chart will be drawn inside this DIV -->
+    <div id="myDiv"></div>
+    <script>
+        /* JAVASCRIPT CODE GOES HERE */
+        // var data = [{
+        //         type: 'scattergeo',
+        //         mode: 'markers',
+        //         locations: ['FRA', 'DEU', 'RUS', 'ESP'],
+        //         marker: {
+        //             size: [20, 30, 15, 10],
+        //             color: [10, 20, 40, 50],
+        //             cmin: 0,
+        //             cmax: 50,
+        //             colorscale: 'Greens',
+        //             colorbar: {
+        //                 title: 'Some rate',
+        //                 ticksuffix: '%',
+        //                 showticksuffix: 'last'
+        //             },
+        //             line: {
+        //                 color: 'black'
+        //             }
+        //         },
+        //         name: 'europe data'
+        //     }];
+
+        //     var layout = {
+        //         'geo': {
+        //             'scope': 'europe',
+        //             'resolution': 50
+        //         }
+        //     };
+
+        //     Plotly.newPlot('myDiv', data, layout);
+    
+    Plotly.d3.csv('wine.csv', function (err, rows) {
+            function unpack(rows, key) {
+                return rows.map(function (row) { return row[key]; });
+            }
+
+            var data = [{
+                type: 'choropleth',
+                locationmode: 'country names',
+                locations: unpack(rows, 'Country'),
+                z: unpack(rows, 'Count'),
+                text: unpack(rows, 'Country'),
+                autocolorscale: true
+            }];
+
+            var layout = {
+                title: 'P',
+      geo: {
+                    projection: {
+                        type: 'robinson'
+          }
+                }
+        };
+
+        Plotly.plot(myDiv, data, layout, { showLink: false });
+
+});
+
+    </script>
+</body>
+</html>
+
+
+
