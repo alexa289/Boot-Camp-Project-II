@@ -129,11 +129,25 @@ def finder():
 
    return render_template("ws-index.html", winelist=winelist)
 
-@app.route("/d31")
+@app.route("/d3")
 def graph1():
+    return render_template("d3-index.html")
+
+@app.route("/avg")
+def average():
     return render_template("avg-index.html")
 
+@app.route("/top12countries")
+def top12countries():
+    return render_template("topc-index.html")
 
+@app.route("/top12varieties")
+def top12varieties():
+    return render_template("top12v-index.html")
+
+@app.route("/map")
+def map():
+    return render_template("map-index.html")
     
 if __name__ == "__main__":
     app.run(debug=True)
