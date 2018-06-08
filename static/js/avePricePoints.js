@@ -15,7 +15,7 @@ var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
 var svg = d3
-  .select("body")
+  .select("#d3-1")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -24,7 +24,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import data from an external CSV file
-d3.csv("countryAve.csv", function(error, aveCountryData) {
+d3.json("countryAve.json", function(error, aveCountryData) {
   if (error) throw error;
 
   console.log(aveCountryData);

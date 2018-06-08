@@ -10,10 +10,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Titillium+Web" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <!--Optional Theme-->
     <!--<link rel='stylesheet' href="https://bootswatch.com/4/lux/bootstrap.min.css">-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/d31-style.css') }}">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
             <div class="collapse navbar-collapse" id="myBar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                        <a href="placeholder.html">Data Discovery</a>
+                        <a href="/data">Data Discovery</a>
                     </li>
                     <li>
                         <a href="/wine-r&d">Wine R&D</a>
@@ -95,8 +96,8 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <h3>Average Price & Points by Country</h3>
                             <a>
-                            <!-- <div id= "d3-1"></div>  -->
-                            <img id='img1' src="{{ url_for('static', filename='assets/avg-price-points.png') }}" class="img-responsive" alt="D31">
+                            <div id= "d3-1"></div> 
+                            <!-- <img id='img1' src="{{ url_for('static', filename='assets/avg-price-points.png') }}" class="img-responsive" alt="D31"> -->
                             </a>
                             </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -156,6 +157,7 @@
     </div>
 </div>
 <script src="{{ url_for('static', filename='js/avePricePoints.js') }}"></script>
+<script src="{{ url_for('static', filename='js/countryAve.json') }}"></script>
 </body>
 
 

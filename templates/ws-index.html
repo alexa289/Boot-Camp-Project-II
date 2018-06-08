@@ -47,7 +47,7 @@
       <div class="collapse navbar-collapse" id="myBar">
         <ul class="nav navbar-nav navbar-right">
           <li class="active">
-            <a href="placeholder.html">Data Discovery</a>
+            <a href="/data">Data Discovery</a>
           </li>
           <li>
             <a href="/wine-r&d">Wine R&D</a>
@@ -92,10 +92,11 @@
   </div>
   <div class="container-fluid">
     <!-- <div class="page-header"> -->
-    <div class="jumbotron" style="background-image: url(./images/597640500.jpg);">
+    <div class="jumbotron text-right">
       <div class="row">
         <div class="left col-lg-8 col-md-8 col-xs-12">
           <h2>Does Binny's Have Your Wine?</h2>
+          <h4>Unpaid partnership with Binnys!</h4>
           <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
         </div>
       </div>
@@ -106,16 +107,17 @@
       <div class="col-md-offset-2 col-md-8">
         <form method="POST" action="/finder" role="form" , name="wineform">
           <div class="form-group">
-            <label for="inputName">Please Enter Your Wine Name Below</label>
+            <label for="inputName">Please Enter The Name of the Wine You Want to Search For</label>
             <input type="text" class="form-control" id="inputName" name="wineName" placeholder="Wine">
           </div>
-          <input type="submit" value="submit" class="btn btn-default">
+          <input type="submit" value="submit" class="btn btn-success">
         </form>
       </div>
     </div>
 
   </div class="container">
-  <div class="row">
+  <div class="row text-center">
+    <p>Your search returned the following wines:</p>
     <form method="GET" action="/finder" role="form" , name="wineform">
       <ul style="list-style: none;">
         {% for wine in winelist %}

@@ -53,6 +53,10 @@ def reviews():
 def summary():
     return render_template("d3-index.html")
 
+@app.route("/data")
+def data():
+    return render_template("data-index.html")
+
 @app.route("/countries")
 def country():
     engine = create_engine("sqlite:///wine.sqlite")
@@ -129,6 +133,8 @@ def finder():
 @app.route("/d31")
 def graph1():
     return render_template("avg-index.html")
+
+
     
 if __name__ == "__main__":
     app.run(debug=True)
