@@ -7,17 +7,43 @@
 
 
 #img1 {
-        background-image: url("img/draftmap.png")
+        background-image: url("img/avg-price-points.png")
 }
 
 #img2 {
-        background-image: url("img/draftmap.png")
+        background-image: url("img/top12countries.png")
 }
 
 #img3 {
-        background-image: url("img/draftmap.png")
+        background-image: url("img/top12varieties.png")
 }
 
 #img4 {
         background-image: url("img/draftmap.png")
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.green {
+  stroke: green;
+}
+
+.blue {
+  stroke: blue;
+}
+
+.text {
+  font-size: 16px;
+  text-anchor: middle;
+}
+
+.points-text {
+  fill: blue;
+}
+
+.price-text {
+  fill: green;
 }
