@@ -28,14 +28,14 @@ app= Flask(__name__)
 # collection = db.items
 
 #MongoDB Server on Heroku 
-# mongo_connect_string = 'mongodb://heroku_89070zm5:vsvftlk81u1jbu8aaq0kf5se8l@ds151840.mlab.com:51840/heroku_89070zm5'
-# client2 = pymongo.MongoClient(mongo_connect_string)
-
-
-mongo_connect_string = os.environ.get('MONGODB_URI', '') or "localhost:27017"
+mongo_connect_string = 'mongodb://heroku_89070zm5:vsvftlk81u1jbu8aaq0kf5se8l@ds151840.mlab.com:51840/heroku_89070zm5'
 client2 = pymongo.MongoClient(mongo_connect_string)
 
-db2 = client2.wine_store_db
+
+# mongo_connect_string = os.environ.get('MONGODB_URI', '') or "localhost:27017"
+# client2 = pymongo.MongoClient(mongo_connect_string)
+
+db2 = client2['wine_store_db']
 collection2 = db2.items
 
 @app.route("/")
@@ -121,8 +121,8 @@ def finder():
        return render_template("ws-index.html", winelist=winelist)
 
    if request.method == "GET":
-       winelist = list(db.items.find().sort(
-           'title', pymongo.ASCENDING).limit(10))
+    #    winelist = list(db2.items.find().sort(
+    #        'title', pymongo.ASCENDING).limit(10))
        return render_template("ws-index.html")
 
     #    return render_template("ws-index.html", winelist=winelist)
