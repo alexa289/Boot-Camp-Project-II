@@ -55,7 +55,7 @@ def summary():
 
 @app.route("/data")
 def data():
-    return render_template("data-index.html")
+    return render_template("chart-index.html")
 
 @app.route("/countries")
 def country():

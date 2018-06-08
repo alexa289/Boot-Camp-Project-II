@@ -12,7 +12,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
     <!--Optional Theme-->
     <!--<link rel='stylesheet' href="https://bootswatch.com/4/lux/bootstrap.min.css">-->
-    <!-- <link rel="stylesheet" href="static/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ds-style.css') }}">
 </head>
 
 <body>
@@ -72,10 +72,11 @@
         </div>
         <div class="container-fluid">
             <!-- <div class="page-header"> -->
-            <div class="jumbotron"style="background-image: url(./images/fall-rose-wine.jpg);">
+            <div class="jumbotron text-right">
                 <div class="row">
                     <div class="left col-lg-8 col-md-8 col-xs-12">
-                        <h1>Wines</h1>
+                        <h1>Wine Reviews <br>
+                            Project II</h1>
                         <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
                     </div>
                 </div>
