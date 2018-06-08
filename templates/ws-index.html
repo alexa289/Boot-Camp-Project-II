@@ -1,25 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Check Binnys</title>
+  <title>Project II Wine DS</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <!-- Library for awesome icons on the footer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Titillium+Web" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+
+
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js">
+  <!-- <link rel="stylesheet" href="./static/css/style.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ds-style.css') }}">
+
 </head>
 
 <body>
-  <div class="container text-center">
-    <h1 class="jumbotron">Find My Wine At Binny's</h1>
-    <div>
-      <ul style="list-style: none;">
-        {% for wine in winelist %}
-        <li>  <a  href="{{ wine.wineurl }}">{{ wine.title }}</a> <img class = "img" src="{{wine.image}}"></li>
-        {% endfor %}
-      </ul>
+  <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+    <!--Use .container-fluid for a full width container-->
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a id="home" class="active navbar-brand brand_color" href="/">Wines</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="myBar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="placeholder.html">Data Discovery</a>
+          </li>
+          <li>
+            <a href="/wine-r&d">Wine R&D</a>
+          </li>
+          <li>
+            <a href="/finder">Wine Finder</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu drop_down_color">
+              <li>
+                <a href="placeholder1.html">Charts</a>
+              </li>
+              <li>
+                <a href="/summary">D3</a>
+              </li>
+              <li>
+                <a href="placeholder1.html">Chloropleth</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--Page General Information-->
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+      </div>
     </div>
   </div>
+  <!-- <div class="container text-center"> -->
+  <!-- <h1 class="jumbotron">Find My Wine At Binny's</h1> -->
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <!-- <div class="page-header"> -->
+    <div class="jumbotron" style="background-image: url(./images/597640500.jpg);">
+      <div class="row">
+        <div class="left col-lg-8 col-md-8 col-xs-12">
+          <h2>Does Binny's Have Your Wine?</h2>
+          <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <form method="POST" action="/finder" role="form" , name="wineform">
+          <div class="form-group">
+            <label for="inputName">Please Enter Your Wine Name Below</label>
+            <input type="text" class="form-control" id="inputName" name="wineName" placeholder="Wine">
+          </div>
+          <input type="submit" value="submit" class="btn btn-default">
+        </form>
+      </div>
+    </div>
+
+  </div class="container">
+  <div class="row">
+    <form method="GET" action="/finder" role="form" , name="wineform">
+      <ul style="list-style: none;">
+        {% for wine in winelist %}
+        <li>
+          <a href="{{ wine.wineurl }}">{{ wine.title }}</a>
+          <img class="img" src="{{wine.image}}">
+        </li>
+        {% endfor %}
+      </ul>
+  </div>
+  </div>
+  <!-- <ul style="list-style: none;">
+       {% for wine in winelist %}
+       <li>  <a  href="{{ wine.wineurl }}">{{ wine.title }}</a> <img class = "img" src="{{wine.image}}"></li>
+       {% endfor %}
+     </ul> -->
+  </div>
+  </div>
 </body>
+<div class="container-fluid">
+  <div class="text-center">
+    <footer class="footer" role="contentinfo" style="background-color: lightgrey">
+      <div class="footer_main_menu text-center">
+        <a href="/" title="Home">Home</a>
+        <a href="/viz" title="Visualization1">Visualization1</a>
+        <a href="/viz" title="Visualization1">Visualization2</a>
+        <a href="/viz" title="Visualization1">Visualization3</a>
+        <a href="/viz" title="Visualization1">Visualization4</a>
+        <a href="/contact" title="Contact">Contact</a>
+      </div>
+      <!--Div for footer-->
+      <div class="footer_main_social-links">
+        <a href="https://github.com/alexa289/Boot-Camp-Project-II">
+          <i class="fa fa-github"></i>
+        </a>
+        <a href="https://twitter.com/wineenthusiast">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <p class="footer-text">
+          <small> © Copyright NWU Data Science Boot Camp
+            </br>
+            April 2018
+          </small>
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>
 
 </html>

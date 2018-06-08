@@ -12,7 +12,7 @@ style.use('fivethirtyeight')
 import matplotlib.pyplot as plt
 
 
-from flask import Flask, render_template, jsonify, redirect
+from flask import Flask, render_template, jsonify, redirect, request
 
 # from flask_pymongo import PyMongo
 import pymongo
@@ -87,11 +87,30 @@ def search_price(price):
     # plt.show()      
 
 
-@app.route("/finder")
+# @app.route("/finder")
+# def finder():
+#     winelist = list(db.items.find().sort('title', pymongo.ASCENDING))
+#     print(winelist)
+#     return render_template("ws-index.html", winelist=winelist)
+
+@app.route("/finder", methods=["GET", "POST"])
 def finder():
-    winelist = list(db.items.find().sort('title', pymongo.ASCENDING))
-    print(winelist)
-    return render_template("ws-index.html", winelist=winelist)
+   if request.method == "POST":
+       name = request.form["wineName"]
+       winelist = list(db.items.find({'title': {'$regex': '' + name + ''}}))
+       print(winelist)
+
+       # winelist = list(db.items.find({'title': {'$regex': ''+ name +''}}))
+       # return redirect("http://localhost:5000/", code=302)
+       return render_template("ws-index.html", winelist=winelist)
+
+   if request.method == "GET":
+       winelist = list(db.items.find().sort(
+           'title', pymongo.ASCENDING).limit(10))
+       return render_template("ws-index.html", winelist=winelist)
+
+   return render_template("ws-index.html", winelist=winelist)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
