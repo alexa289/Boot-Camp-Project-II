@@ -16,15 +16,28 @@ from flask import Flask, render_template, jsonify, redirect, request
 
 # from flask_pymongo import PyMongo
 import pymongo
-
+import os 
  
 
 app= Flask(__name__)
 
-conn = "mongodb://localhost:27017"
-client = pymongo.MongoClient(conn)
-db = client.wine_store_db
-collection = db.items
+# MongoDB Local Machine 
+# conn = "mongodb://localhost:27017"
+# client = pymongo.MongoClient(conn)
+# db = client.wine_store_db
+# collection = db.items
+
+#MongoDB Server on Heroku 
+mongo_connect_string = 'mongodb://heroku_89070zm5:vsvftlk81u1jbu8aaq0kf5se8l@ds151840.mlab.com:51840/heroku_89070zm5?authSource=admin'
+client2 = pymongo.MongoClient(mongo_connect_string)
+
+# MdbURI = "mongodb://useradmin:mypassword@localhost:27017/tracking?authSource=admin"
+# client = MongoClient(MdbURI)
+# mongo_connect_string = os.environ.get('MONGODB_URI', '') or "localhost:27017"
+# client2 = pymongo.MongoClient(mongo_connect_string)
+
+db2 = client2.wine_store_db
+collection2 = db2.items
 
 @app.route("/")
 def home():
@@ -97,7 +110,7 @@ def search_price(price):
 def finder():
    if request.method == "POST":
        name = request.form["wineName"]
-       winelist = list(db.items.find({'title': {'$regex': '' + name + ''}}))
+       winelist = list(db2.items.find({'title': {'$regex': '' + name + ''}}))
        print(winelist)
 
        # winelist = list(db.items.find({'title': {'$regex': ''+ name +''}}))
@@ -105,9 +118,11 @@ def finder():
        return render_template("ws-index.html", winelist=winelist)
 
    if request.method == "GET":
-       winelist = list(db.items.find().sort(
-           'title', pymongo.ASCENDING).limit(10))
-       return render_template("ws-index.html", winelist=winelist)
+    #    winelist = list(db.items.find().sort(
+    #        'title', pymongo.ASCENDING).limit(10))
+       return render_template("ws-index.html")
+
+    #    return render_template("ws-index.html", winelist=winelist)
 
    return render_template("ws-index.html", winelist=winelist)
 
