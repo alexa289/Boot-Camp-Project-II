@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Titillium+Web" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <!--Optional Theme-->
     <!--<link rel='stylesheet' href="https://bootswatch.com/4/lux/bootstrap.min.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -71,12 +72,12 @@
         </div>
     </div>
     <div class="container-fluid">
-        <!-- <div class="page-header"> -->
-        <div class="jumbotron" style="background-image: url(./images/fall-rose-wine.jpg);">
+        <div class="page-header">
+        <div class="jumbotron" >
 
             <div class="row">
                 <div class="left col-lg-8 col-md-8 col-xs-12">
-                    <h1>Wines</h1>
+                    <h1>Summary Level Data</h1>
                     <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
 
                 </div>
@@ -85,35 +86,37 @@
     </div>
     </div>
         <div class="container-fluid">
-            <div class="page-header">
-                <div class="jumbotron">
+            <!-- <div class="page-header"></div> -->
+                <!-- <div class="jumbotron" style="background-color: white;"> -->
+                    
                     <header>
-                        <h2>Summary Level Data</h2>
+                        <h2>Wine Dashboard</h2>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <h3>Graph1</h3>
-                            <a href="place.html">
-                                <img id='img1' src="imgs/avg-price-points.png" class="img-responsive" alt="D31">
+                            <h3>Average Price & Points by Country</h3>
+                            <a>
+                            <!-- <div id= "d3-1"></div>  -->
+                            <img id='img1' src="{{ url_for('static', filename='assets/avg-price-points.png') }}" class="img-responsive" alt="D31">
                             </a>
                             </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <h3>Graph2</h3>
+                            <h3>Top 12 Countries by Review Count</h3>
                             <a href="place.html">
-                            <img id='img2' src="imgs/drafttop12.png" class="img-responsive" alt="D32">
+                            <img id='img2' src="{{ url_for('static', filename='assets/top12countries.png') }}" class="img-responsive" alt="D32">
                             </a>
                         </div>
                         </div>
                         <div class="row">
                          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <h3>Graph3</h3>
+                            <h3>Top 12 Varieties by Review Count</h3>
                             <a href="place.html">
-                            <img id='img3' src="imgs/drafttop12.png" class="img-responsive" alt="D33">
+                            <img id='img3' src="{{ url_for('static', filename='assets/top12varieties.png') }}" class="img-responsive" alt="D33">
                              </a>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <h3>Graph4</h3>
+                            <h3>Chloropleth</h3>
                             <a href="place.html">
-                            <img id='img4' src="imgs/draftmap.png" class="img-responsive" alt="D34">
+                            <img id='img4' src="{{ url_for('static', filename='assets/draftmap.png') }}" class="img-responsive" alt="D34">
                             </a>
                         </div>
                         </div>
@@ -131,11 +134,7 @@
     <div class="text-center">
         <footer class="footer" role="contentinfo" style="background-color: lightgrey">
             <div class="footer_main_menu text-center">
-                <a href="/" title="Home">Home</a>
-                <a href="/viz" title="Visualization1">Visualization1</a>
-                <a href="/viz" title="Visualization1">Visualization2</a>
-                <a href="/viz" title="Visualization1">Visualization3</a>
-                <a href="/viz" title="Visualization1">Visualization4</a>
+                <a href="/" title="Home">Home \ </a>
                 <a href="/contact" title="Contact">Contact</a>
             </div>
             <!--Div for footer-->
@@ -156,12 +155,7 @@
         </footer>
     </div>
 </div>
-
-</html>
-
-
-
-
+<script src="{{ url_for('static', filename='js/avePricePoints.js') }}"></script>
 </body>
 
 

@@ -111,6 +111,9 @@ def finder():
 
    return render_template("ws-index.html", winelist=winelist)
 
-
+@app.route("/d31")
+def graph1():
+    return render_template("avg-index.html")
+    
 if __name__ == "__main__":
     app.run(debug=True)
