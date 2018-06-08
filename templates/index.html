@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Project II</title>
+    <title>Home-ProjectII</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -13,6 +13,7 @@
     <!--Optional Theme-->
     <!--<link rel='stylesheet' href="https://bootswatch.com/4/lux/bootstrap.min.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ds-style.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
 </head>
 
 <body>
@@ -75,8 +76,8 @@
             <div class="jumbotron text-right">
                 <div class="row">
                     <div class="left col-lg-8 col-md-8 col-xs-12">
-                        <h1>Wine Reviews <br>
-                            Project II</h1>
+                        <h1 id=#"header" style="color: rgb(59, 5, 59); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Wine Reviews</h1>
+                            <h2 style="color: rgb(15, 78, 39); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">ProjectII</h2>
                         <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
                     </div>
                 </div>
@@ -84,58 +85,61 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="left col-lg-8 col-md-8 col-xs-12">
-                    <h2>placeholder</h2>
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-                            from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
-                            up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word
-                            in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                            Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
-                            ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
-                            line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                            Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
-                            accompanied by English versions from the 1914 translation by H. Rackham.
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                            text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It
-                            has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
-                            was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    <a href="placeholder.html">Visualization1</a>,
-                                    <a href="placeholder.html">Visualization2</a>,
-                                    <a href="placeholder.html">Visualization3</a>, and
-                                    <a href="placeholder.html">Visualization4</a>
+                <div class="left col-lg-6 col-md-6 col-xs-12">
+                    <h2 >ABOUT OUR PROJECT</h2>
+                            <p align="justify">
+                            Our data is all about wine. The data was obtained from <a href="https://www.kaggle.com">Kaggle.com</a>, and consists of 130,000 wine reviews from Wine Enthusiast
+                            magazine. The data set was designed to offer some opportunities for sentiment analysis and other text related analysis. Our
+                            other data set was scraped from <a href="https://www.binnys.com/wine">Binnys</a>, and includes their selection of wines. <br>
+                            <br>
+                            <h4>WHAT'S IN OUR DATA?</h4>
+                            The wine review data includes country and province of origin, variety, winery, price and points of a wine, along with a review / description.
+                            The Binny’s data answers the question – is the wine I want available at Binny’s? <br>
+                            <br>
+                            <h4>WHY WE CHOSE IT??</h4> 
+                            Because data on whisky wasn’t readily available! Actually, the wine data was a very large, and varied set of information. It offered the chance to analyze
+                            the data, and develop an application to search the data, and to offer a chance to interact with another data set (Binny’s)<br>
+                            <br>
+                            <h4>WHY IS NOTEWORTHY?</h4>
+                            The number of varieties of wine is immense. Finding the wine or wines that are of interest is difficult.
+                            Once you have found a wine of interest, buying it can also be a challenge. Our project was to make the wine finding process
+                            easier!
                             </p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-10">
+                <div class="col-lg-6 col-md-4 col-xs-10">
                     <h2> Visualizations </h2>
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
-                            <div class="thumbnail">
+                            <h5>Top 12 countries by Review Count </h5>
+                            <div class="thumbnail text-center">
                                 <a href="placeholder.html">
-                                    <img src="placeholder.jpg" class="img_responsive" alt="Image 1">
+                                    <img src="{{ url_for('static', filename='assets/top12countries.png') }}" class="img_responsive" alt="Image 1">
                                 </a>
                             </div>
                         </div>
                     <div class="col-md-6 col-lg-6">
-                        <div class="thumbnail">
+                        <!-- <div class="thumbnail text-center"> -->
+                            <h5>Top 12 varieties by Review Count </h5>
+                            <div class="thumbnail text-centers">
                             <a href="placeholder.html">
-                                <img src="placeholder.jpg" class="img_responsive" alt="Image 2">
+                                <img src="{{ url_for('static', filename='assets/top12varieties.png') }}" class="img_responsive" alt="Image 2">
                             </a>
                         </div>
                     </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
-                            <div class="thumbnail">
+                            <h5>Average Price & Points by Country </h5>
+                            <div class="thumbnail text-center">
                                 <a href="placeholder.html">
-                                    <img src="placeholder.jpg" class="img_responsive" alt="Image 3">
+                                    <img src="{{ url_for('static', filename='assets/avg-price-points.png') }}" class="img_responsive" alt="Image 3">
                                 </a>
                             </div>
                         </div>
                     <div class="col-md-6 col-lg-6">
-                        <div class="thumbnail">
-                                <a href="placeholder.html">
-                                    <img src="placeholder.jpg" class="img_responsive" alt="Image 4">
+                        <div class="thumbnail text-center">
+                                <a href="XXXXX">
+                                    <img src="{{ url_for('static', filename='assets/draftmap.png') }}" class="img_responsive" alt="Image 4">
                                 </a>
                         </div>
                     </div>
@@ -168,7 +172,7 @@
                 <p class="footer-text">
                     <small> © Copyright NWU Data Science Boot Camp
                         </br>
-                        April 2018
+                        June 2018
                     </small>
                 </p>
             </div>
