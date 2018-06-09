@@ -31,11 +31,12 @@ app= Flask(__name__)
 mongo_connect_string = 'mongodb://heroku_89070zm5:vsvftlk81u1jbu8aaq0kf5se8l@ds151840.mlab.com:51840/heroku_89070zm5'
 client2 = pymongo.MongoClient(mongo_connect_string)
 
-
+# mongodb://heroku_89070zm5:vsvftlk81u1jbu8aaq0kf5se8l@ds151840.mlab.com:51840/heroku_89070zm5
 # mongo_connect_string = os.environ.get('MONGODB_URI', '') or "localhost:27017"
 # client2 = pymongo.MongoClient(mongo_connect_string)
 
-db2 = client2['wine_store_db']
+# db2 = client2['wine_store_db']
+db2 = client2['heroku_89070zm5']
 collection2 = db2.items
 
 @app.route("/")
@@ -114,6 +115,7 @@ def finder():
    if request.method == "POST":
        name = request.form["wineName"]
        winelist = list(db2.items.find({'title': {'$regex': '' + name + ''}}))
+    
        print(winelist)
 
        # winelist = list(db.items.find({'title': {'$regex': ''+ name +''}}))
