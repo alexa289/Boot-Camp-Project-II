@@ -1,0 +1,13 @@
+.jumbotron{
+        margin-top: 20px;
+        background-image: url("img/597640500.jpg");
+        background-size: cover;
+        color:black;
+
+    };
+      .footer{
+        background:#f6f7f9;
+        border:1px solid #555;
+        border-top-color: #ccc;
+        height:20px;
+      };
