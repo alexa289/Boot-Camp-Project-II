@@ -3,16 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Data-ProjectII</title>
+    <title>Py-ProjectII</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Titillium+Web" rel="stylesheet">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <!--Optional Theme-->
     <!--<link rel='stylesheet' href="https://bootswatch.com/4/lux/bootstrap.min.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ds-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/d31-style.css') }}">
 </head>
 
 <body>
@@ -52,7 +55,7 @@
                                 <a href="placeholder1.html">Charts</a>
                             </li>
                             <li>
-                                <a href="placeholder1.html">D3</a>
+                                <a href="/summary">D3</a>
                             </li>
                             <li>
                                 <a href="placeholder1.html">Chloropleth</a>
@@ -71,28 +74,71 @@
         </div>
     </div>
     <div class="container-fluid">
-        <!-- <div class="page-header"> -->
-        <div class="jumbotron text-right">
-            <div class="row">
-                <div class="left col-lg-8 col-md-8 col-xs-12">
-                    <h1>Data Discovery</h1>
-                    <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
+        <div class="page-header">
+            <div class="jumbotron text-right">
+
+                <div class="row">
+                    <div class="left col-lg-8 col-md-8 col-xs-12">
+                        <h1 id=# "header" style="color: rgb(59, 5, 59); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">D3 Dashboard</h1>
+                        <h3 style="color: rgb(15, 78, 39); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Summary Level Data</h3>
+                        <!-- <img src="fall-rose-wine.jpg" alt="Wine picture" width="300" height="300" class="pull-left img_responsive img-rounded"> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div id="MyChart">
+    <div class="container-fluid">
+        <!-- <div class="page-header"></div> -->
+        <!-- <div class="jumbotron" style="background-color: white;"> -->
+
+        <header>
+            <h2 style="color: rgb(59, 5, 59); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Linear Regression Analysis</h2>
+            <p>We wanted to see if there was a significant correlation between price and points
+                given in the wine reviews. We found out that even if the linear model is not as good, 
+                R-squared < 0.5, there's a significant correlation
+                between the cost of wine and its rating, namely theres an average $1.05
+                increase for every one point incrase in rating. By itself, this would not be a good predictive model. 
+               
+            </p>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                    <h3>Average Price & Points by Country</h3>
+                    <a href="/avg">
+                        <!-- <div id= "d3-1"></div>  -->
+                        <img id='img1' src="{{ url_for('static', filename='assets/correlation.png') }}" class="img-responsive" alt="D31">
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                    <h3>Top 12 Countries by Review Count</h3>
+                    <a href="/top12countries">
+                        <img id='img2' src="{{ url_for('static', filename='assets/v-price-points.png') }}" class="img-responsive" alt="D32">
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h3>Top 12 Varieties by Review Count</h3>
+                    <a href="/top12varieties">
+                        <img id='img3' src="{{ url_for('static', filename='assets/price-points.png') }}" class="img-responsive" alt="D33">
+                    </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h3>Chloropleth</h3>
+                    <a href="/map">
+                        <img id='img4' src="{{ url_for('static', filename='assets/pp-correlation.png') }}" class="img-responsive" alt="D34">
+                    </a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </header>
+    </div>
+    </div>
 
     </div>
 
-    
-    <!-- jQuery for Bootstrap JavaScript plugins -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
+    </div>
 </body>
-
+<!-- Footer-->
 <div class="container-fluid">
     <div class="text-center">
         <footer class="footer" role="contentinfo" style="background-color: lightgrey">
@@ -118,5 +164,9 @@
         </footer>
     </div>
 </div>
+<script src="{{ url_for('static', filename='js/avePricePoints.js') }}"></script>
+<script src="{{ url_for('static', filename='js/countryAve.json') }}"></script>
+</body>
+
 
 </html>

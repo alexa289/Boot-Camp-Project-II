@@ -143,11 +143,14 @@ def top12countries():
 
 @app.route("/top12varieties")
 def top12varieties():
-    return render_template("top12v-index.html")
+    return render_template("topv-index.html")
 
 @app.route("/map")
 def map():
     return render_template("map-index.html")
     
+@app.route("/pycharts")
+def correlation():
+    return render_template("py-index.html")
 if __name__ == "__main__":
     app.run(debug=True)
