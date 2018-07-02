@@ -66,14 +66,14 @@ function handleSearchButtonClick() {
     if (filterPoints != "") {
         filteredData = dataSet.filter(function (data) {
         var dataPoints = data.points;
-        return dataPoints >= filterPoints;
+        return dataPoints == filterPoints;
     });
     };
 
     if (filterPrice != "") {
         filteredData = dataSet.filter(function (data) {
             var dataPrice = data.price;
-            return dataPrice <= filterPrice;
+            return dataPrice == filterPrice;
         });
     };
 
